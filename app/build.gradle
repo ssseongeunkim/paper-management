@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'eclipse-wtp'
+    id 'war'
+}
+
+// 자바 소스를 컴파일 할 때 적용할 옵션
+tasks.withType(JavaCompile) {
+    // $javac -encoding UTF-8 ...
+    options.encoding = 'UTF-8';
+}
+
+eclipse {
+    project {
+        name = "paper-management"
+    }
+}
+
+war {
+  archiveBaseName = "pmp"
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+    testImplementation 'junit:junit:4.13'
+
+    implementation 'com.google.guava:guava:29.0-jre'
+}
+
